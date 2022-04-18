@@ -1,7 +1,7 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
-namespace sdst
+namespace sdts
 {
     template <typename Number, int XSize, int YSize, typename Functor>
     struct _Filter

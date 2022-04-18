@@ -1,7 +1,7 @@
 #ifndef INPUTSIGNAL_HPP
 #define INPUTSIGNAL_HPP
 
-namespace sdst
+namespace sdts
 {
     template<typename Number, int Xsize>
     struct InputSignal
