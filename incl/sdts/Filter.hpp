@@ -1,6 +1,9 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
+#include "sdts/InputSignal.hpp"
+#include "sdts/OutputSignal.hpp"
+
 namespace sdts
 {
     template <typename Number, int XSize, int YSize, typename Functor>
@@ -12,7 +15,7 @@ namespace sdts
         
         _Filter(Functor f) : func(f){}
 
-        float operator()(float xin)
+        Number operator()(Number xin)
         {
             Xseries.push(xin);
             func(Xseries, Yseries);
