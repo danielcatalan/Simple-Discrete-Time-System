@@ -3,7 +3,7 @@
 Simple discrete time system library for c++. This library aims to simplify the creation of a discrete time system or filter.
 Lets say we want to implement the following filter:
 
-![equation](https://latex.codecogs.com/svg.image?\inline&space;\bg{white}y[n]=0.9\times&space;x[n]&plus;0.1\times&space;y[n-1])
+![equation](https://latex.codecogs.com/png.image?\inline&space;\dpi{110}\bg{white}y[n]=0.9\times&space;x[n]&plus;0.1\times&space;y[n-1])
 
 We can implement the filter using the difference equation in c++ as follows:
 ```c++
