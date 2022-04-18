@@ -6,7 +6,7 @@ namespace sdts
     template<typename Number, int Ysize>
     struct OutputSignal
     {
-        std::array<Number,Ysize> _output;
+        std::array<Number,Ysize> _output{0};
 
         void shift()
         {
@@ -29,10 +29,7 @@ namespace sdts
                 auto N = (-1* n);
                 return _output[N];
             }
-            else
-            {
-                return _output[0];
-            }
+            return _output[0];
         }
     };
 }

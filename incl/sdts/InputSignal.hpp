@@ -6,7 +6,7 @@ namespace sdts
     template<typename Number, int Xsize>
     struct InputSignal
     {
-        std::array<Number,Xsize+1> _input;
+        std::array<Number,Xsize> _input{0};
 
         void push(Number x)
         {
