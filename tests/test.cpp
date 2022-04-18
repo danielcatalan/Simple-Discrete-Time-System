@@ -56,13 +56,12 @@ TEST(TestSuite, MovingAverage)
 TEST(TestSuite, YFeedback)
 {
     // Use Exponential Smoothing
-    double alpha = 1;
+    double alpha = 0.9;
     auto filter = sdts::Filter<double,1,2>::CreateFilter([n=0,&alpha](const auto& x, auto& y)
     {
         y[n] = alpha*x[n] + (1-alpha)*y[n-1];
     });
 
-    alpha = 0.9;
     std::array<double,6> xin      = {0.00, 1.00, 1.00, 1.00, 1.00, 1.00};
     std::array<double,6> expected = {0.00, 0.90, 0.99, 0.999, 0.9999, 0.99999};
     
