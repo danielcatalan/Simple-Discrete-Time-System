@@ -11,5 +11,8 @@ add_library(sdts INTERFACE
     incl/sdts/OutputSignal.hpp)
 target_include_directories(sdts INTERFACE incl)
 
-enable_testing()
-add_subdirectory(tests)
+get_directory_property(hasParent PARENT_DIRECTORY)
+if(hasParent STREQUAL "")
+    enable_testing()
+    add_subdirectory(tests)
+endif()
