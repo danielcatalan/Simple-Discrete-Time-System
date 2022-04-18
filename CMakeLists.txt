@@ -1,3 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(SimpleDiscreteTimeSystem)
+project(SimpleDiscreteTimeSystem CXX)
+
+add_library(sdts INTERFACE 
+    incl/sdts/Filter.hpp
+    incl/sdts/InputSignal.hpp
+    incl/sdts/OutputSignal.hpp)
