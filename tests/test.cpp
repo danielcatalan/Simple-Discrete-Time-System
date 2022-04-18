@@ -18,6 +18,7 @@ TEST(TestSuite, StraightThrough)
     EXPECT_EQ(xin, yout);
 }
 
+
 TEST(TestSuite, Delay)
 {
     auto filter = sdts::Filter<double,2,1>::CreateFilter([n=0](const auto& x, auto& y)
@@ -34,6 +35,7 @@ TEST(TestSuite, Delay)
 
     EXPECT_EQ(expected, yout);
 }
+
 
 TEST(TestSuite, MovingAverage)
 {
