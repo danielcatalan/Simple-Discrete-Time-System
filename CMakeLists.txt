@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.16)
 
 project(SimpleDiscreteTimeSystem CXX)
 
-find_package(GTest CONFIG REQUIRED)
 
 
 add_library(sdts INTERFACE 
@@ -12,4 +11,5 @@ add_library(sdts INTERFACE
     incl/sdts/OutputSignal.hpp)
 target_include_directories(sdts INTERFACE incl)
 
+enable_testing()
 add_subdirectory(tests)
