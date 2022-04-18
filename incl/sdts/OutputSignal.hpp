@@ -31,6 +31,12 @@ namespace sdts
             }
             return _output[0];
         }
+
+        Number& operator=(Number val)
+        {
+            _output[0] = val;
+            return _output[0];
+        }
     };
 }
 
