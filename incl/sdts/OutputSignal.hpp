@@ -4,21 +4,15 @@
 namespace sdts
 {
     template<typename Number, int Ysize>
-    struct OutputSignal
+    class OutputSignal
     {
         std::array<Number,Ysize> _output{0};
-
+        int zero_index = 0;
+        
+    public:
         void shift()
         {
-            Number pass_to_next;
-            Number from_prev = 0;
-
-            for(auto& out: _output)
-            {
-                pass_to_next = out;
-                out = from_prev;
-                from_prev = pass_to_next;
-            }
+            zero_index = (zero_index + 1) % Ysize;
         }
         // 3  2  1  0 -1 -2 -3
         // 0  0  0  0  1  2  3
@@ -26,16 +20,16 @@ namespace sdts
         {
             if(n < 0)
             {
-                auto N = (-1* n);
-                return _output[N];
+                auto I = (Ysize + zero_index + n) % Ysize;
+                return _output[I];
             }
-            return _output[0];
+            return _output[zero_index];
         }
 
         Number& operator=(Number val)
         {
-            _output[0] = val;
-            return _output[0];
+            _output[zero_index] = val;
+            return _output[zero_index];
         }
     };
 }

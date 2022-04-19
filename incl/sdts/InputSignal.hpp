@@ -4,31 +4,23 @@
 namespace sdts
 {
     template<typename Number, int Xsize>
-    struct InputSignal
+    class InputSignal
     {
         std::array<Number,Xsize> _input{0};
-
+        int zero_index = 0;
+        
+    public:
         void push(Number x)
         {
-            Number pass_to_next;
-            Number from_prev = x;
+            zero_index = (zero_index + 1) % Xsize;
 
-            for(auto& in: _input)
-            {
-                pass_to_next = in;
-                in = from_prev;
-                from_prev = pass_to_next;
-            }
+            _input[zero_index] = x;
         }
 
         auto& operator[](int n) const
         {
-            if(n < 0)
-            {
-                auto N = -1* n;
-                return _input[N];
-            }
-            return _input[0];
+            auto I = (Xsize + zero_index + n) % Xsize;
+            return _input[I];
         }
 
         operator Number() const
