@@ -5,10 +5,7 @@ project(SimpleDiscreteTimeSystem CXX)
 
 
 
-add_library(sdts INTERFACE 
-    incl/sdts/Filter.hpp
-    incl/sdts/InputSignal.hpp
-    incl/sdts/OutputSignal.hpp)
+add_library(sdts INTERFACE )
 target_include_directories(sdts INTERFACE incl)
 
 get_directory_property(hasParent PARENT_DIRECTORY)
