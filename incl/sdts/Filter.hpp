@@ -18,9 +18,9 @@ namespace sdts
         Number operator()(Number xin)
         {
             Xseries.push(xin);
+            Yseries.shift();
             func(Xseries, Yseries);
             auto result = Yseries[0];
-            Yseries.shift();
             return result;
         }
     };
