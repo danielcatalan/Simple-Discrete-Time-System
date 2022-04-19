@@ -31,7 +31,7 @@ namespace sdts
             return _input[0];
         }
 
-        operator float() const
+        operator Number() const
         {
             return _input[0];
         }
