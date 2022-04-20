@@ -29,8 +29,8 @@ namespace sdts
     /**
      * @brief Filter creator class.
      * 
-     * @tparam XSize 
-     * @tparam YSize 
+     * @tparam XSize size of array to hold previous x-values.
+     * @tparam YSize size of array to hold previous y-values.
      * @tparam Number Some numerical type. Prefer using double or float.
      */
     template <int XSize, int YSize, typename Number=double>
