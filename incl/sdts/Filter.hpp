@@ -7,13 +7,14 @@
 namespace sdts
 {
     template <typename Number, int XSize, int YSize, typename Functor>
-    struct _Filter
+    class DifferenceEquation
     {
         Functor func;
         InputSignal<Number,XSize> Xseries;
         OutputSignal<Number,YSize> Yseries;
-        
-        _Filter(Functor f) : func(f){}
+    
+    public:
+        DifferenceEquation(Functor f) : func(f){}
 
         Number operator()(Number xin)
         {
@@ -25,13 +26,19 @@ namespace sdts
         }
     };
 
-
-    template <typename Number, int XSize, int YSize>
+    /**
+     * @brief Filter creator class.
+     * 
+     * @tparam XSize 
+     * @tparam YSize 
+     * @tparam Number Some numerical type. Prefer using double or float.
+     */
+    template <int XSize, int YSize, typename Number=double>
     struct Filter{
         template<typename Functor>
         static auto CreateFilter(Functor f)
         {
-            return _Filter<Number, XSize, YSize, Functor>(f);
+            return DifferenceEquation<Number, XSize, YSize, Functor>(f);
         }
     };
 }

@@ -5,7 +5,7 @@
 
 TEST(TestSuite, StraightThrough)
 {
-    auto filter = sdts::Filter<float,1,1>::CreateFilter([n=0](const auto& x, auto& y)
+    auto filter = sdts::Filter<1,1,float>::CreateFilter([n=0](const auto& x, auto& y)
     {
         y[n] = x[n];
     });
@@ -21,7 +21,7 @@ TEST(TestSuite, StraightThrough)
 
 TEST(TestSuite, Delay)
 {
-    auto filter = sdts::Filter<double,2,1>::CreateFilter([n=0](const auto& x, auto& y)
+    auto filter = sdts::Filter<2,1>::CreateFilter([n=0](const auto& x, auto& y)
     {
         y[n] = x[n-1];
     });
@@ -39,7 +39,7 @@ TEST(TestSuite, Delay)
 
 TEST(TestSuite, MovingAverage)
 {
-    auto filter = sdts::Filter<double,4,1>::CreateFilter([n=0](const auto& x, auto& y)
+    auto filter = sdts::Filter<4,1>::CreateFilter([n=0](const auto& x, auto& y)
     {
         y[n] = 0.25*(x[n] + x[n-1] + x[n-2] + x[n-3]);
     });
@@ -59,7 +59,7 @@ TEST(TestSuite, YFeedback)
 {
     // Use Exponential Smoothing
     double alpha = 0.9;
-    auto filter = sdts::Filter<double,1,2>::CreateFilter([n=0,&alpha](const auto& x, auto& y)
+    auto filter = sdts::Filter<1,2>::CreateFilter([n=0,&alpha](const auto& x, auto& y)
     {
         y[n] = alpha*x[n] + (1-alpha)*y[n-1];
     });
