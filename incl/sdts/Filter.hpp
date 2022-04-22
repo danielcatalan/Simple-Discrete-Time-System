@@ -6,6 +6,14 @@
 
 namespace sdts
 {
+    /**
+     * @brief Class to represent a difference equation as a function object
+     * 
+     * @tparam Number numerical base type. prefer to use double or float.
+     * @tparam XSize size of array that holds previous and current input values
+     * @tparam YSize size of array that holds previous and current output values
+     * @tparam Functor class of functor to be implemented
+     */
     template <typename Number, int XSize, int YSize, typename Functor>
     class DifferenceEquation
     {
