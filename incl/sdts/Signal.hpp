@@ -1,6 +1,8 @@
 #ifndef SIGNAL_HPP
 #define SIGNAL_HPP
 
+#include <array>
+
 namespace sdts
 {
     template<typename Number, int Size>
