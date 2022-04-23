@@ -36,6 +36,22 @@ TEST(TestSuite, Delay)
     EXPECT_EQ(expected, yout);
 }
 
+TEST(TestSuite, Delay2)
+{
+    auto filter = sdts::Filter<2,1>::CreateFilter([](const auto& x, auto& y)
+    {
+        y = x[-1];
+    });
+
+    std::array<double,6> xin      = {1,2,3,4,5,6};
+    std::array<double,6> expected = {0,1,2,3,4,5};
+    
+    std::array<double,6> yout;
+
+    std::transform(xin.begin(), xin.end(), yout.begin(), filter);
+
+    EXPECT_EQ(expected, yout);
+}
 
 TEST(TestSuite, MovingAverage)
 {
