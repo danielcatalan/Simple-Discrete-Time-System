@@ -1,31 +1,19 @@
 #ifndef INPUTSIGNAL_HPP
 #define INPUTSIGNAL_HPP
 
+#include "sdts/Signal.hpp"
+
 namespace sdts
 {
     template<typename Number, int Xsize>
-    class InputSignal
-    {
-        std::array<Number,Xsize> _input{0};
-        int zero_index = 0;
-        
+    class InputSignal : public Signal<Number, Xsize>
+    {   
     public:
         void push(Number x)
         {
-            zero_index = (zero_index + 1) % Xsize;
+            this->zero_index = (this->zero_index + 1) % Xsize;
 
-            _input[zero_index] = x;
-        }
-
-        auto& operator[](int n) const
-        {
-            auto I = (Xsize + zero_index + n) % Xsize;
-            return _input[I];
-        }
-
-        operator Number() const
-        {
-            return _input[0];
+            this->_signal[this->zero_index] = x;
         }
     };
 }
