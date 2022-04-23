@@ -8,7 +8,7 @@ namespace sdts
     {
     protected:
         std::array<Number,Size> _signal{0};
-        int zero_index = 0;
+        int zero_index = Size-1;
 
         int GetCorrectedIndex(int n) const
         {

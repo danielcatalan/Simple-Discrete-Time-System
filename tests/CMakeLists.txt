@@ -2,7 +2,9 @@
 find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 
-add_executable(SdtsUnitTest test.cpp)
+add_executable(SdtsUnitTest
+    test.cpp
+    TestInputSignal.cpp)
 target_compile_features(sdts INTERFACE cxx_std_17)
 
 
