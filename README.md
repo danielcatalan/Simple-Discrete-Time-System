@@ -27,7 +27,7 @@ std::transform(xin.begin(), xin.end(), yout.begin(), filter1);
 
 
 // Using for loop
-for(auto i=0; i < xin.size(); i++)
+for(auto i=0; i < N; i++)
 {
     yout[i] = filter1(xin[i]);
 }
