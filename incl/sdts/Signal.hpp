@@ -37,7 +37,7 @@ namespace sdts
 
         operator Number() const
         {
-            return signal[0];
+            return _signal[0];
         }
     };
 }
