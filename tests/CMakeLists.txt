@@ -5,7 +5,7 @@ include(GoogleTest)
 add_executable(SdtsUnitTest
     test.cpp
     TestInputSignal.cpp)
-target_compile_features(SdtsUnitTest INTERFACE cxx_std_17)
+target_compile_features(SdtsUnitTest PUBLIC cxx_std_17)
 
 target_compile_options(SdtsUnitTest PRIVATE -Wall -Wextra -pedantic -Werror)
 
