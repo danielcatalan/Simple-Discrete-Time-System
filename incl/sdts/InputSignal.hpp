@@ -9,7 +9,7 @@ namespace sdts
     class InputSignal : public Signal<Number, Xsize>
     {   
     public:
-        void push(Number x)
+        constexpr void push(Number x)
         {
             this->zero_index = (this->zero_index + 1) % Xsize;
 

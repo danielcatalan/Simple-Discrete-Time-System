@@ -22,9 +22,9 @@ namespace sdts
         OutputSignal<Number,YSize> Yseries;
     
     public:
-        DifferenceEquation(Functor f) : func(f){}
+        constexpr DifferenceEquation(Functor f) : func(f){}
 
-        Number operator()(Number xin)
+        constexpr Number operator()(Number xin)
         {
             Xseries.push(xin);
             Yseries.shift();
@@ -44,7 +44,7 @@ namespace sdts
     template <int XSize, int YSize, typename Number=double>
     struct Filter{
         template<typename Functor>
-        static auto CreateFilter(Functor f)
+        static constexpr auto CreateFilter(Functor f)
         {
             return DifferenceEquation<Number, XSize, YSize, Functor>(f);
         }

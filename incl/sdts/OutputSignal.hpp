@@ -9,13 +9,13 @@ namespace sdts
     class OutputSignal : public Signal<Number,Ysize>
     {
     public:
-        void shift()
+        constexpr void shift()
         {
             auto& zero_index  = this->zero_index;
             zero_index = (zero_index + 1) % Ysize;
         }
 
-        Number& operator=(Number val)
+        constexpr Number& operator=(Number val)
         {
             auto& zero_index  = this->zero_index;
             auto& _signal = this->_signal;

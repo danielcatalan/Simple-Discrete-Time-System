@@ -12,7 +12,7 @@ namespace sdts
         std::array<Number,Size> _signal{0};
         int zero_index = Size-1;
 
-        int GetCorrectedIndex(int n) const
+        constexpr int GetCorrectedIndex(int n) const
         {
             if(n<0)
             {
@@ -23,13 +23,13 @@ namespace sdts
         
     public:
 
-        auto& operator[](int n) const
+        constexpr auto& operator[](int n) const
         {
             auto I = GetCorrectedIndex(n);
             return _signal[I];
         }
 
-        auto& operator[](int n)
+        constexpr auto& operator[](int n)
         {
             auto I = GetCorrectedIndex(n);
             return _signal[I];
