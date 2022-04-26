@@ -18,11 +18,6 @@ constexpr auto DoFilter(const std::array<double,6>& xin)
 
 TEST(DifferenceEquation, filt)
 {
-    // Use Exponential Smoothing
-    constexpr auto filter = sdts::Filter<1,2>::CreateFilter([n=0](const auto& x, auto& y)
-    {
-        y[n] = 0.9*x[n] + (0.1)*y[n-1];
-    });
 
     constexpr std::array<double,6> xin = {0.00, 1.00, 1.00, 1.00, 1.00, 1.00};
     std::array<double,6> expected      = {0.00, 0.90, 0.99, 0.999, 0.9999, 0.99999};
