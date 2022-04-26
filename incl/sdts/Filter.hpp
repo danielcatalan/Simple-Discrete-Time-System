@@ -32,6 +32,17 @@ namespace sdts
             auto result = Yseries[0];
             return result;
         }
+
+        template<typename Container>
+        constexpr Container filt(const Container& xin)
+        {
+            Container yout = {0};
+            for(std::size_t i =0; i < xin.size(); i++)
+            {
+                yout[i] = (*this)(xin[i]);
+            }
+            return yout;
+        }
     };
 
     /**
