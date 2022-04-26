@@ -3,7 +3,7 @@
 #include <algorithm>
 
 
-TEST(TestSuite, StraightThrough)
+TEST(BasicFilter, StraightThrough)
 {
     auto filter = sdts::Filter<1,1,float>::CreateFilter([n=0](const auto& x, auto& y)
     {
@@ -19,7 +19,7 @@ TEST(TestSuite, StraightThrough)
 }
 
 
-TEST(TestSuite, Delay)
+TEST(BasicFilter, Delay)
 {
     auto filter = sdts::Filter<2,1>::CreateFilter([n=0](const auto& x, auto& y)
     {
@@ -36,7 +36,7 @@ TEST(TestSuite, Delay)
     EXPECT_EQ(expected, yout);
 }
 
-TEST(TestSuite, Delay2)
+TEST(BasicFilter, Delay2)
 {
     auto filter = sdts::Filter<2,1>::CreateFilter([](const auto& x, auto& y)
     {
@@ -53,7 +53,7 @@ TEST(TestSuite, Delay2)
     EXPECT_EQ(expected, yout);
 }
 
-TEST(TestSuite, MovingAverage)
+TEST(BasicFilter, MovingAverage)
 {
     auto filter = sdts::Filter<4,1>::CreateFilter([n=0](const auto& x, auto& y)
     {
@@ -71,7 +71,7 @@ TEST(TestSuite, MovingAverage)
 }
 
 
-TEST(TestSuite, YFeedback)
+TEST(BasicFilter, YFeedback)
 {
     // Use Exponential Smoothing
     double alpha = 0.9;
