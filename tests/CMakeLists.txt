@@ -3,7 +3,7 @@ find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 
 add_executable(SdtsUnitTest
-    TestDiffEq.cpp
+    TestFilters.cpp
     TestInputSignal.cpp)
 target_compile_features(SdtsUnitTest PUBLIC cxx_std_17)
 
