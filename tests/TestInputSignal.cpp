@@ -12,7 +12,7 @@ public:
 };
 
 
-TEST(TestInpuSignal, ElementPlacement)
+TEST(InpuSignal, ElementPlacement)
 {
     UnitTestInputsignal<5> x;
     auto expected = std::array<double,5> {2,4,6,8,10};
