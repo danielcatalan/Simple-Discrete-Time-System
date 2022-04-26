@@ -1,41 +1,27 @@
 #ifndef OUTPUTSIGNAL_HPP
 #define OUTPUTSIGNAL_HPP
 
+#include "sdts/Signal.hpp"
+
 namespace sdts
 {
     template<typename Number, int Ysize>
-    struct OutputSignal
+    class OutputSignal : public Signal<Number,Ysize>
     {
-        std::array<Number,Ysize> _output{0};
-
-        void shift()
+    public:
+        constexpr void shift()
         {
-            Number pass_to_next;
-            Number from_prev = 0;
-
-            for(auto& out: _output)
-            {
-                pass_to_next = out;
-                out = from_prev;
-                from_prev = pass_to_next;
-            }
-        }
-        // 3  2  1  0 -1 -2 -3
-        // 0  0  0  0  1  2  3
-        auto& operator[](int n)
-        {
-            if(n < 0)
-            {
-                auto N = (-1* n);
-                return _output[N];
-            }
-            return _output[0];
+            auto& zero_index  = this->zero_index;
+            zero_index = (zero_index + 1) % Ysize;
         }
 
-        Number& operator=(Number val)
+        constexpr Number& operator=(Number val)
         {
-            _output[0] = val;
-            return _output[0];
+            auto& zero_index  = this->zero_index;
+            auto& _signal = this->_signal;
+
+            _signal[zero_index] = val;
+            return _signal[zero_index];
         }
     };
 }

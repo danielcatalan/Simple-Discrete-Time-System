@@ -6,16 +6,25 @@
 
 namespace sdts
 {
+    /**
+     * @brief Class to represent a difference equation as a function object
+     * 
+     * @tparam Number numerical base type. prefer to use double or float.
+     * @tparam XSize size of array that holds previous and current input values
+     * @tparam YSize size of array that holds previous and current output values
+     * @tparam Functor class of functor to be implemented
+     */
     template <typename Number, int XSize, int YSize, typename Functor>
-    struct _Filter
+    class DifferenceEquation
     {
         Functor func;
         InputSignal<Number,XSize> Xseries;
         OutputSignal<Number,YSize> Yseries;
-        
-        _Filter(Functor f) : func(f){}
+    
+    public:
+        constexpr DifferenceEquation(Functor f) : func(f){}
 
-        Number operator()(Number xin)
+        constexpr Number operator()(Number xin)
         {
             Xseries.push(xin);
             Yseries.shift();
@@ -23,15 +32,32 @@ namespace sdts
             auto result = Yseries[0];
             return result;
         }
+
+        template<typename Container>
+        constexpr Container filt(const Container& xin)
+        {
+            Container yout = {0};
+            for(std::size_t i =0; i < xin.size(); i++)
+            {
+                yout[i] = (*this)(xin[i]);
+            }
+            return yout;
+        }
     };
 
-
-    template <typename Number, int XSize, int YSize>
+    /**
+     * @brief Filter creator class.
+     * 
+     * @tparam XSize size of array to hold previous x-values.
+     * @tparam YSize size of array to hold previous y-values.
+     * @tparam Number Some numerical type. Prefer using double or float.
+     */
+    template <int XSize, int YSize, typename Number=double>
     struct Filter{
         template<typename Functor>
-        static auto CreateFilter(Functor f)
+        static constexpr auto CreateFilter(Functor f)
         {
-            return _Filter<Number, XSize, YSize, Functor>(f);
+            return DifferenceEquation<Number, XSize, YSize, Functor>(f);
         }
     };
 }
