@@ -16,5 +16,5 @@ namespace sdts
             this->_signal[this->zero_index] = x;
         }
     };
-}
+} // namespace sdts
 #endif // #ifndef INPUTSIGNAL_HPP
