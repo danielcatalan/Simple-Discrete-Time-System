@@ -1,4 +1,5 @@
 # Simple-Discrete-Time-System #
+![Github Action](https://github.com/danielcatalan/Simple-Discrete-Time-System/actions/workflows/cmake.yml/badge.svg)
 
 Simple discrete time system library for c++. This library aims to simplify the creation of a discrete time system or filter.
 
